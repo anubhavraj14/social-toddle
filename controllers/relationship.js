@@ -16,6 +16,24 @@ export const addRelationship = (req, res) => {
   const token = req.cookies.accessToken;
   if (!token) return res.status(401).json("Not logged in!");
 
+  const generateNonsenseString = () => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    const length = 20;
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+
+    return result;
+  };
+
+  const nonsenseString = generateNonsenseString();
+  console.log(`Unique Nonsense String: ${nonsenseString}`);
+
   jwt.verify(token, "secretkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
 
@@ -32,6 +50,24 @@ export const addRelationship = (req, res) => {
 export const deleteRelationship = (req, res) => {
   const token = req.cookies.accessToken;
   if (!token) return res.status(401).json("Not logged in!");
+
+  const generateNonsenseString = () => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    const length = 20;
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+
+    return result;
+  };
+
+  const nonsenseString = generateNonsenseString();
+  console.log(`Unique Nonsense String: ${nonsenseString}`);
 
   jwt.verify(token, "secretkey", (err, userInfo) => {
     if (err) return res.status(403).json("Token is not valid!");
